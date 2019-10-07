@@ -12,7 +12,7 @@
             .column
               .content
                 h2.subtitle.is-6: a(href="https://vuex.vuejs.org/" target="_blank") Vuex
-                p Biblioteca basada en Flux (Patron de diseño) que permite controlar el estado de nuestras aplicaciones proporcionando un store único para todos los componentes de la misma.
+                p Biblioteca basada en Flux (Patrón de diseño) que permite controlar el estado de nuestras aplicaciones proporcionando un store único para todos los componentes de la misma.
             .column
               .content
                 h2.subtitle.is-6: a(href="https://nuxtjs.org/" target="_blank") Nuxt
@@ -20,7 +20,7 @@
             .column
               .content
                 h2.subtitle.is-6: a(href="https://router.vuejs.org" target="_blank") Vue router
-                p Permite la gestion de las URLs y sus componentes enlazandolos a estas, es decir, que proporciona el medio para crear una SPA (Sinlge Page Application)
+                p Permite la gestión de las URLs y sus componentes enlazándolos a estas, es decir, que proporciona el medio para crear una SPA (Sinlge Page Application)
         .column.is-12.has-text-centered
           h2.subtitle.has-text-success.is-5 Herramientas DB (Developer Experience)
           .columns
