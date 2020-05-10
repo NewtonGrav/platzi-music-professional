@@ -1,15 +1,19 @@
 <template lang="pug">
-  section.hero.is-success.is-medium.is-primary
+  section.hero.is-fullheight.is-success
+    .bg-container
+      .bg-cover(
+        :class="this.bgHero",
+        :style="this.bgImageProperty"
+      )
     .hero-head
       nav.navbar(role="navigation", aria-label="main navigation")
         .container
           .navbar-brand
-            .navbar-item
-              router-link(to="/")
-                p: strong.has-text-white PlatziMusic
+            router-link.navbar-item(to="/")
+              p: strong.has-text-white PlatziMusic
             a.navbar-burger.burger(
               :class="{'is-active': this.navbarMenuActive}",
-              role="button", 
+              role="button",
               aria-label="menu",
               aria-expanded="false",
               data-target="navbarMenuHeroA",
@@ -39,6 +43,7 @@
 
 <script>
 import pmPlayer from "@/components/Player.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "Header",
@@ -47,6 +52,23 @@ export default {
     return {
       navbarMenuActive: false
     };
+  },
+  computed: {
+    ...mapState(["track"]),
+    bgHero: function () {
+      return {
+        "is-success": Object.keys(this.track).length === 0,
+        "bg-cover": Object.keys(this.track).length > 0
+      }
+    },
+    bgImageProperty: function () {
+      if (Object.keys(this.track).length !== 0) {
+        let cover = this.track.album.images[0].url;
+        if (cover !== "") return { backgroundImage: `url(${cover})` };
+      }
+
+      return { backgroundImage: "none" };
+    }
   },
 
   methods: {
@@ -64,6 +86,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.bg-container {
+  position: absolute;
+  z-index: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.bg-cover {
+  height: 110%;
+  width: 110%;
+  transform: translate(-5%, -5%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  filter: blur(8px) brightness(0.25);
+}
 #navbarMenuHeroA {
   position: absolute;
   left: 0;
