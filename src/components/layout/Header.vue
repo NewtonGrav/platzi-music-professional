@@ -5,7 +5,7 @@
         :class="this.bgHero",
         :style="this.bgImageProperty"
       )
-    .hero-head
+    .hero-head(:class="{'navbar-new-color': this.changeColorNavbar}")
       nav.navbar(role="navigation", aria-label="main navigation")
         .navbar-brand
           router-link.navbar-item(to="/")
@@ -46,11 +46,17 @@ import { mapState } from "vuex";
 
 export default {
   name: "Header",
-
   data () {
     return {
-      navbarMenuActive: false
+      navbarMenuActive: false,
+      changeColorNavbar: false
     };
+  },
+  created () {
+    window.addEventListener("scroll", this.checkNavbar);
+  },
+  destroyed () {
+    window.removeEventListener("scroll", this.checkNavbar);
   },
   computed: {
     ...mapState(["track"]),
@@ -69,15 +75,16 @@ export default {
       return { backgroundImage: "none" };
     }
   },
-
   methods: {
     burgerActive () {
       this.navbarMenuActive
         ? (this.navbarMenuActive = false)
         : (this.navbarMenuActive = true);
+    },
+    checkNavbar () {
+      this.changeColorNavbar = window.scrollY >= this.$el.clientHeight
     }
   },
-
   components: {
     pmPlayer
   }
@@ -92,26 +99,32 @@ export default {
   z-index: 99;
 }
 
+.navbar-new-color {
+  background-color: #23d160;
+}
+
 .is-active {
   border: none;
 }
+
 .bg-container {
   position: absolute;
   z-index: 0;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+
+  & .bg-cover {
+    height: 110%;
+    width: 110%;
+    transform: translate(-5%, -5%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    filter: blur(8px) brightness(0.25);
+  }
 }
 
-.bg-cover {
-  height: 110%;
-  width: 110%;
-  transform: translate(-5%, -5%);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  filter: blur(8px) brightness(0.25);
-}
 #navbarMenuHeroA {
   border-radius: 10px;
 }
