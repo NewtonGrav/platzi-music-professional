@@ -1,9 +1,9 @@
 <template lang="pug">
   .content(v-if="this.track.album")
-    p.is-128-128
+    div.image
       a(:href="this.track.external_urls.spotify",target="_blank")
         img.is-rounded(:src="track.album.images[1].url")
-    p
+    p.song-details
       strong {{ this.track.name }}
       br
       small {{ this.track.duration_ms | ms-to-mm }}
@@ -23,7 +23,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-img {
-  border-radius: 50%;
+.image {
+  margin: 0 auto;
+  width: 248px;
+}
+.song-details {
+  margin-top: 16px;
+
+  & strong {
+    color: #20BC5B;
+  }
 }
 </style>
