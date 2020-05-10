@@ -12,7 +12,7 @@ const store = new Vuex.Store({
   },
 
   getters: {
-    getTrackTitle(state) {
+    getTrackTitle (state) {
       if (!state.track || !state.track.artists) {
         return ""
       }
@@ -24,16 +24,16 @@ const store = new Vuex.Store({
   },
 
   mutations: {
-    setTrack(state, track) {
+    setTrack (state, track) {
       state.track = track
     },
-    setTracks(state, payload) {
+    setTracks (state, payload) {
       state.tracks = payload.tracks
     }
   },
 
   actions: {
-    getTrackById(context, payload) {
+    getTrackById (context, payload) {
       return trackService.getById(payload.id)
         .then((res) => {
           context.commit("setTrack", res)

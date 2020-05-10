@@ -4,7 +4,6 @@
       a(:href="this.track.external_urls.spotify", target="_blank")
         figure.image.is-1by1
           img(:src="track.album.images[0].url")
-      
     .card-content
       .media
         .media-left
@@ -14,15 +13,16 @@
           p.title.is-6: strong {{track.name}}
           p.subtitle.is-6 {{track.artists[0].name}}
       .columns.is-mobile
-        .column 
+        .column
           p.time-track {{track.duration_ms | ms-to-mm }}
         nav.column
           .level.is-mobile
               button.button.is-success.level-item(@click="selectTrack")
-                span.icon: font-awesome-icon(icon="play" size="sm")
+                span.icon
+                  font-awesome-icon(icon="play" size="sm")
               button.button.is-info.is-outlined.level-item(@click="goToTrack(track.id)")
-                span.icon: font-awesome-icon(icon="info"  size="sm" :style="{color: '$info'}")
-                  
+                span.icon
+                  font-awesome-icon(icon="info"  size="sm" :style="{color: '$info'}")
 </template>
 
 <script>
@@ -41,7 +41,7 @@ export default {
   },
 
   methods: {
-    goToTrack(id) {
+    goToTrack (id) {
       if (!this.track.preview_url) {
         return;
       }

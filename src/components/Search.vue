@@ -46,7 +46,7 @@ export default {
     pmNotification
   },
 
-  data() {
+  data () {
     return {
       totalTracksFound: 0,
       searchQuery: "",
@@ -60,23 +60,23 @@ export default {
   computed: {
     ...mapState(["track", "tracks"]),
 
-    totalTracks() {
+    totalTracks () {
       return this.totalTracksFound;
     }
   },
 
   watch: {
-    noTracksNotification() {
+    noTracksNotification () {
       if (this.noTracksNotification) {
         setTimeout(() => (this.noTracksNotification = false), 3000);
       }
     },
-    foundTracksNotification() {
+    foundTracksNotification () {
       if (this.foundTracksNotification) {
         setTimeout(() => (this.foundTracksNotification = false), 3000);
       }
     },
-    noQuery() {
+    noQuery () {
       if (this.noQuery) {
         setTimeout(() => (this.noQuery = false), 3000);
       }
@@ -84,7 +84,7 @@ export default {
   },
 
   methods: {
-    searchTracks(search) {
+    searchTracks (search) {
       if (!search) {
         this.noQuery = true;
         return;
