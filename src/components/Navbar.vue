@@ -1,17 +1,16 @@
 <template lang="pug">
-  nav.level.has-background-dark.is-centered.is-mobile
-      .level-item.has-text-centered
+  nav.level.has-background-dark.is-mobile
+      .has-text-centered
         .field.has-addons
           p.control.has-icons-left
             input.input.is-medium(
               type="text",
-              placeholder="Que disfrutarás hoy?", 
+              placeholder="Buscar..."
               v-model="searchQuery",
               @keyup.enter="search"
             )
             span.icon.is-small.is-left
               font-awesome-icon(icon="search")
-              
           .field.is-grouped
             p.control
               button.btn-search.button.is-success.is-medium(@click="search") Buscar
@@ -24,17 +23,17 @@
 export default {
   name: "NavBar",
 
-  data() {
+  data () {
     return {
       searchQuery: ""
     };
   },
 
   methods: {
-    search() {
+    search () {
       this.$emit("search", this.searchQuery);
     },
-    deleteSearch() {
+    deleteSearch () {
       this.searchQuery = "";
     }
   }
@@ -42,6 +41,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+nav {
+  justify-content: center;
+}
+
+input::placeholder {
+  font-size: 18px;
+}
+
 .level {
   padding: 1rem;
 }
