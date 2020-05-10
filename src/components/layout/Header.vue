@@ -7,23 +7,22 @@
       )
     .hero-head
       nav.navbar(role="navigation", aria-label="main navigation")
-        .container
-          .navbar-brand
-            router-link.navbar-item(to="/")
-              p: strong.has-text-white PlatziMusic
-            a.navbar-burger.burger(
-              :class="{'is-active': this.navbarMenuActive}",
-              role="button",
-              aria-label="menu",
-              aria-expanded="false",
-              data-target="navbarMenuHeroA",
-              @click="burgerActive",
-            )
-              span(aria-hidden="true")
-              span(aria-hidden="true")
-              span(aria-hidden="true")
+        .navbar-brand
+          router-link.navbar-item(to="/")
+            p: strong.has-text-white PlatziMusic
+          a.navbar-burger.burger(
+            :class="{'is-active': this.navbarMenuActive}",
+            role="button",
+            aria-label="menu",
+            aria-expanded="false",
+            data-target="navbarMenuHeroA",
+            @click="burgerActive",
+          )
+            span(aria-hidden="true")
+            span(aria-hidden="true")
+            span(aria-hidden="true")
 
-          .navbar-menu(:class="{'is-active': this.navbarMenuActive}", id="navbarMenuHeroA")
+        .navbar-menu(:class="{'is-active': this.navbarMenuActive}", id="navbarMenuHeroA")
             .navbar-end
               router-link.navbar-item(
                 :class="{ 'is-active': this.$route.name === 'search' }",
@@ -86,6 +85,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.hero-head {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.is-active {
+  border: none;
+}
 .bg-container {
   position: absolute;
   z-index: 0;
@@ -104,8 +113,6 @@ export default {
   filter: blur(8px) brightness(0.25);
 }
 #navbarMenuHeroA {
-  position: absolute;
-  left: 0;
-  right: 0;
+  border-radius: 10px;
 }
 </style>
