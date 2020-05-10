@@ -68,7 +68,5 @@ export default {
   position: absolute;
   left: 0;
   right: 0;
-
-  box-shadow: 0px 10px 14px 0px hsla(0, 0%, 0%, 0.2);
 }
 </style>
