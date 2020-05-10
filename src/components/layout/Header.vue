@@ -5,7 +5,8 @@
         .container
           .navbar-brand
             .navbar-item
-              p: strong.has-text-white PlatziMusic
+              router-link(to="/")
+                p: strong.has-text-white PlatziMusic
             a.navbar-burger.burger(
               :class="{'is-active': this.navbarMenuActive}",
               role="button", 
@@ -42,14 +43,14 @@ import pmPlayer from "@/components/Player.vue";
 export default {
   name: "Header",
 
-  data() {
+  data () {
     return {
       navbarMenuActive: false
     };
   },
 
   methods: {
-    burgerActive() {
+    burgerActive () {
       this.navbarMenuActive
         ? (this.navbarMenuActive = false)
         : (this.navbarMenuActive = true);
