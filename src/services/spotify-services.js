@@ -21,7 +21,7 @@ services.getTokenResponse = async () => {
 }
 
 services.searchTracks = async (q) => {
-  let url = process.env.VUE_APP_API_URL + "search?q=@q&type=track&market=US"
+  let url = `${config.urlSpotifyApi}search?q=@q&type=track&market=US&limit=50`
   url = url.replace("@q", q)
 
   let res = await fetch(url, {
@@ -30,10 +30,20 @@ services.searchTracks = async (q) => {
     }
   })
 
-  console.log("Rest: ", res);
   return res.json()
 }
 
-// searchTrackById
+// TODO fix
+services.searchTrackById = async (id) => {
+  let url = `${config.urlSpotifyApi}tracks/${id}`
+
+  let res = await fetch(url, {
+    headers: {
+      "Authorization": "Bearer " + localStorage.getItem("token") || ""
+    }
+  })
+
+  return res.json()
+}
 
 export default services

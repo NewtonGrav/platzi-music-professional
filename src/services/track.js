@@ -1,15 +1,13 @@
-import platziMusicService from "./platzi-music"
-import services from "./spotify-services";
+import spotify from "./spotify-services";
 
 const trackService = {}
 
 trackService.searching = function (q) {
-  return services.searchTracks(q)
+  return spotify.searchTracks(q)
 }
 
 trackService.getById = function (id) {
-  return platziMusicService.get(`/tracks/${id}`)
-    .then((res) => res.data)
+  return spotify.searchTrackById(id)
 }
 
 export default trackService
