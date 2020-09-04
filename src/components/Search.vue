@@ -1,7 +1,7 @@
 <template lang="pug">
   main
 
-    pmNavbar(@search="searchTrackss")
+    pmNavbar(@search="searchTracks")
 
     //- TODO Tiempo limite al loading
     transition-group(name="move" mode="out-in" tag="section")
