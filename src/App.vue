@@ -12,11 +12,18 @@
 import pmFooter from "@/components/layout/Footer.vue";
 import pmHeader from "@/components/layout/Header.vue";
 
+import spotifyServices from "./services/spotify-services";
+
 export default {
   name: "App",
   components: {
     pmFooter,
     pmHeader
+  },
+  created() {
+    spotifyServices.getTokenResponse()
+      .then(res => res.json())
+      .then(json => localStorage.setItem("token", json.access_token))
   }
 };
 </script>
