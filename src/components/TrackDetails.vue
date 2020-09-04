@@ -45,7 +45,7 @@ export default {
 
   mixins: [trackMixin],
 
-  created() {
+  created () {
     const ID = this.$route.params.idTrack;
 
     if (!this.track || !this.track.id || this.track.id !== ID) {
