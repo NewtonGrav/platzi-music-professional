@@ -1,8 +1,9 @@
 <template lang="pug">
   main
 
-    pmNavbar(@search="searchTracks")
+    pmNavbar(@search="searchTrackss")
 
+    //- TODO Tiempo limite al loading
     transition-group(name="move" mode="out-in" tag="section")
       pmLoader(v-show="this.isLoading", key="loader")
 
