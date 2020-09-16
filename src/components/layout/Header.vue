@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.hero.is-fullheight.is-success
+  section.hero.is-medium.is-success
     .bg-container
       .bg-cover(
         :class="this.bgHero",
