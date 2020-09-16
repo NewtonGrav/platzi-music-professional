@@ -95,16 +95,16 @@ export default {
 
       this.isLoading = true;
 
-      trackService.searching(search).then(res => {
-        res.tracks.total === 0
+      trackService.searching(search).then(json => {
+        json.tracks.total === 0
           ? (this.noTracksNotification = true)
           : (this.foundTracksNotification = true);
 
-        if (res.tracks.total === 0) {
+        if (json.tracks.total === 0) {
           this.noTracksNotification = true;
         } else {
           this.foundTracksNotification = true;
-          this.$store.commit("setTracks", { tracks: res.tracks.items });
+          this.$store.commit("setTracks", { tracks: json.tracks.items });
           this.totalTracksFound = this.tracks.length;
         }
 

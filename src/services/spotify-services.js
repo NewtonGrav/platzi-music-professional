@@ -1,4 +1,4 @@
-import config from "./../config";
+import envVariables from "../config/envVariables";
 
 var services = {}
 
@@ -6,9 +6,10 @@ services.getTokenResponse = async () => {
   let urlencoded = new URLSearchParams();
   urlencoded.append("grant_type", "client_credentials");
 
-  let authorizationEncode = window.btoa(`${config.spotifyClientId}:${config.spotifyClientSecret}`)
+  let authorizationEncode = window
+    .btoa(`${envVariables.spotifyClientId}:${envVariables.spotifyClientSecret}`)
 
-  let res = await fetch(process.env.VUE_APP_TOKEN_URL, {
+  let res = await fetch(envVariables.urlAccessToken, {
     method: "POST",
     headers: {
       "Authorization": `Basic ${authorizationEncode}`,
@@ -21,7 +22,7 @@ services.getTokenResponse = async () => {
 }
 
 services.searchTracks = async (q) => {
-  let url = `${config.urlSpotifyApi}search?q=@q&type=track&market=US&limit=50`
+  let url = `${envVariables.urlSpotifyApi}search?q=@q&type=track&market=US&limit=50`
   url = url.replace("@q", q)
 
   let res = await fetch(url, {
@@ -33,9 +34,8 @@ services.searchTracks = async (q) => {
   return res.json()
 }
 
-// TODO fix
 services.searchTrackById = async (id) => {
-  let url = `${config.urlSpotifyApi}tracks/${id}`
+  let url = `${envVariables.urlSpotifyApi}tracks/${id}`
 
   let res = await fetch(url, {
     headers: {
