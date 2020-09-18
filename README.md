@@ -1,6 +1,7 @@
 # Platzi Music Professional
 
-_SPA (Single Page Application) que utiliza la API de Spotify para buscar y reproducir música_
+_SPA (Single Page Application) que utiliza la API de Spotify(proporcionada por Platzi para simplificar el uso y la implementación) para buscar y reproducir música_
+
 
 ## Project setup
 
